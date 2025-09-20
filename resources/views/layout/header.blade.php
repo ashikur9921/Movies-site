@@ -83,9 +83,7 @@
 									<a href="pricing.html" class="header__nav-link">Pricing Plan</a>
 								</li>
 
-								<li class="header__nav-item">
-									<a href="{{ url('upload') }}" class="header__nav-link">Upload</a>
-								</li>
+							
 
 								<!-- dropdown -->
 								<li class="dropdown header__nav-item">
@@ -129,14 +127,14 @@
 		</div>
 
 		<!-- header search -->
-		<form action="#" class="header__search">
+		<form action="{{ route('search') }}" class="header__search" method="GET">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="header__search-content">
-							<input type="text" placeholder="Search for a movie, TV Series that you are looking for">
+							<input type="text" name="query" placeholder="Search for a movie, TV Series that you are looking for" required>
 
-							<button type="button">search</button>
+							<button type="submit">search</button>
 						</div>
 					</div>
 				</div>

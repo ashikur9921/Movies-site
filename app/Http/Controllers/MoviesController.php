@@ -16,4 +16,17 @@ class MoviesController extends Controller
         return view('pages.movies', compact( 'categori'));
     }
 
+     public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    
+    $movies = \App\Models\Movie::where('name', 'LIKE', "%{$query}%")->get();
+
+    return view('pages.search', compact('movies', 'query'));
 }
+
+
+
+}
+

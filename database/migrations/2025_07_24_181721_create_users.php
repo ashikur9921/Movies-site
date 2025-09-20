@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->string('password')->nullable();
+            $table->boolean('is_approved')->default(false);
+            $table->boolean('is_admin')->default(false); 
             $table->timestamps();
         });
     }
@@ -27,4 +29,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    
 };

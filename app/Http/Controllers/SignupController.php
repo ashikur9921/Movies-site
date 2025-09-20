@@ -5,26 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Signup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-
 
 class SignupController extends Controller
 {
-    use HasFactory, Notifiable;
-    public function showform()
+    public function showForm()
     {
         return view('pages.signup');
     }
-    protected $table = 'users';
 
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email'    => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
 
@@ -34,12 +29,12 @@ class SignupController extends Controller
 
         $user = Signup::create([
             'username' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         Auth::login($user);
 
-        return redirect()->route('upload');
+        return redirect()->route('upload'); // always go to upload page
     }
 }

@@ -50,8 +50,23 @@
   </head>
 
   <body>
-
+     
   <div class="form-container ">
+ <div class="d-flex justify-content-between mb-3">
+    <!-- Left Link -->
+    <a href="{{ route('all') }}" class="header__sign-in text-white px-4 py-2 text-decoration-none">
+        AllMovies
+    </a>
+
+    <!-- Right Button (Logout form) -->
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="header__sign-in text-white px-4 py-2">
+            LOGOUT
+        </button>
+    </form>
+</div>
+    
   @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{ session('success') }}
@@ -140,6 +155,8 @@
     <button type="submit" class="header__sign-in text-white px-4 py-2">Submit</button>
     </div>
   </form>
+   
+
   </div>
 
   <!-- Bootstrap JS (optional) -->

@@ -62,7 +62,7 @@
 							
 							<button class="sign__btn" type="submit">Sign in</button>
 
-							<span class="sign__text">Don't have an account? <a href="signup.html">Sign up!</a></span>
+							<span class="sign__text">Don't have an account? <a href="{{ route('signup') }}">Sign up!</a></span>
 
 							<span class="sign__text"><a href="#">Forgot password?</a></span>
 						</form>
